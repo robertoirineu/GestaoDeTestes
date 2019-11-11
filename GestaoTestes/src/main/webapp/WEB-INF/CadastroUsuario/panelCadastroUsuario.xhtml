@@ -1,0 +1,232 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+
+	<!-- PAINEL DE CADASTRO DO USUARIO -->
+
+	<h:form id="frmCadastroUsuario">
+		<p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+
+		<p:panel header="Cadastro de Usuarios"
+			style="padding: 0px !important; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD;">
+
+			<p:outputPanel>
+				<h:graphicImage library="images" name="logo.png" height="5%"
+					width="5%" style="margin-left: 20px;" />
+				<p:outputLabel value="Usuario"
+					style="font-size: 24px !important; margin-left: 10px; color: cadetblue;" />
+			</p:outputPanel>
+
+			<p:panel style="border-style: none !important;">
+				<p:panelGrid columns="1" layout="grid"
+					styleClass="ui-panelgrid-blank">
+
+					<!-- PAINEL DOS DADOS (TOPO) DO CADASTRO DO USUARIO-->
+					<p:outputPanel>
+						<p:panelGrid columns="4" layout="grid"
+							columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-2,ui-grid-col-2"
+							styleClass="ui-panelgrid-blank">
+							<p:outputPanel>
+								<p:outputLabel value="Código Usuario:" for="codigoUsuario"
+									styleClass="label" />
+								<br />
+								<p:inputText id="codigoUsuario" disabled="true"
+									value="#{cadastroUsuarioBean.usuario.codUsuario}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Nome do Usuario:" for="nomeUsuario"
+									styleClass="label" />
+								<br />
+								<p:inputText id="nomeUsuario" required="true" 
+									value="#{cadastroUsuarioBean.usuario.nomeUsuario}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Status do Usuario:" for="statusUsuario"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="statusUsuario" required="true"
+									value="#{cadastroUsuarioBean.usuario.statusUsuario}">
+									<f:selectItem itemLabel="-STATUS-" noSelectionOption="true" />
+									<f:selectItems value="#{cadastroUsuarioBean.status}"
+										itemLabel="#{Sts.status}" var="Sts" itemValue="#{Sts}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Direito:" for="direitoUsuario"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="direitoUsuario" required="true"
+									value="#{cadastroUsuarioBean.usuario.direitoUsuario}">
+									<f:selectItem itemLabel="-DIREITO-" noSelectionOption="true" />
+									<f:selectItems value="#{cadastroUsuarioBean.direito}"
+										itemLabel="#{dir.direito}" var="dir" itemValue="#{dir}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+						</p:panelGrid>
+
+						<p:panelGrid columns="4" layout="grid"
+							columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-2,ui-grid-col-2"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Senha:" for="senhaUsuario"
+									styleClass="label" />
+								<br />
+								<p:password id="senhaUsuario" required="true"
+									value="#{cadastroUsuarioBean.usuario.paswUsuario}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="E-mail:" for="emailUsuario"
+									styleClass="label" />
+								<br />
+								<p:inputText id="emailUsuario" required="true"
+									value="#{cadastroUsuarioBean.usuario.email}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Cargo:" for="cargoUsuario"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="cargoUsuario" required="true"
+									value="#{cadastroUsuarioBean.usuario.cargo}">
+									<f:selectItem itemLabel="-CARGO-" noSelectionOption="true" />
+									<f:selectItems value="#{cadastroUsuarioBean.cargo}"
+										itemLabel="#{car.cargo}" var="car" itemValue="#{car}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Nivel:" for="nivelUsuario"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="nivelUsuario" required="true"
+									value="#{cadastroUsuarioBean.usuario.nivel}">
+									<f:selectItem itemLabel="-NIVEL-" noSelectionOption="true" />
+									<f:selectItems value="#{cadastroUsuarioBean.nivel}"
+										itemLabel="#{niv.nivel}" var="niv" itemValue="#{niv}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+						</p:panelGrid>
+
+						<p:panelGrid columns="2" layout="grid"
+							columnClasses="ui-grid-col-2,ui-grid-col-10"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Data Cadastro:" for="dtCadastroUsuario"
+									styleClass="label" />
+								<br />
+								<p:calendar id="dtCadastroUsuario" pattern="dd/MM/yyyy"
+									value="#{cadastroUsuarioBean.usuario.dataCadastro}" />
+							</p:outputPanel>
+							<p:outputPanel></p:outputPanel>
+
+						</p:panelGrid>
+					</p:outputPanel>
+
+					<!-- BARRA DOS BOTÕES -->
+					<p:panel>
+						<p:panelGrid columns="4" layout="grid"
+							columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4"
+							styleClass="ui-panelgrid-blank">
+
+
+							<p:commandButton value="Imprimir"
+								actionListener="#{cadastroUsuarioBean.gerarPdfUsuario}"
+								update="frmCadastroUsuario" />
+
+
+							<p:commandButton value="salvar"
+								actionListener="#{cadastroUsuarioBean.salvarUsuario}"
+								update="frmCadastroUsuario frmPesquisaUsuario" />
+
+							<p:commandButton value="Carregar foto"
+								oncomplete="PF('upLoadImageDialog').show()"
+								update=":formDialogs:panelUpImagem" />
+
+							<p:commandButton value="Limpar"
+								action="#{cadastroUsuarioBean.limparUsuario}" process="@this"
+								update="frmCadastroUsuario frmPesquisaUsuario" />
+
+
+						</p:panelGrid>
+					</p:panel>
+
+					<!-- DATA TABLE USUARIOS CADASTRADOS -->
+					<p:outputPanel>
+						<p:outputLabel value="Usuarios Cadastrados"
+							style="font-size: 24px !important; color: cadetblue;" />
+
+						<p:dataTable value="#{cadastroUsuarioBean.usuarios}" var="us"
+							styleClass="dataTableDash" selectionMode="single" rowKey=""
+							sortOrder="#{us.dataCadastro}" reflow="true"
+							emptyMessage="Sem novos projetos cadastrados"
+							style="margin-bottom: 15px;" rows="7" paginator="true"
+							paginatorPosition="bottom">
+
+							<p:column headerText="Id" style="width: 03%; text-align: center;">
+								<h:outputText value="#{us.codUsuario}" />
+							</p:column>
+
+							<p:column headerText="Nome usuario" style="width: 30%;">
+								<h:outputText value="#{us.nomeUsuario}"
+									style="text-align: left; font-weight: bold;" />
+							</p:column>
+
+							<p:column headerText="E-mail" style="width: 30%;">
+								<h:outputText value="#{us.email}" style="text-align: left;" />
+							</p:column>
+
+							<p:column headerText="Cargo/Função" style="width: 15%;">
+								<h:outputText value="#{us.cargo.cargo}"
+									style="text-align: left;" />
+							</p:column>
+
+							<p:column headerText="Nivel"
+								style="width: 7%; text-align: center;">
+								<h:outputText value="#{us.nivel.nivel}" />
+							</p:column>
+
+							<p:column headerText="Data Cadastro"
+								style="width: 10%; text-align: center;">
+								<h:outputText value="#{us.dataCadastro}"
+									converter="dataConverter" />
+							</p:column>
+						</p:dataTable>
+
+						<p:separator />
+
+						<p:outputLabel value="Total de Registros:"
+							styleClass="outPutTotal" />
+						<p:outputLabel value="#{cadastroUsuarioBean.usuarios.size()}"
+							styleClass="outPutTotal" />
+					</p:outputPanel>
+				</p:panelGrid>
+			</p:panel>
+		</p:panel>
+	</h:form>
+
+	<h:form id="formDialogs">
+		<p:dialog header="Upload de imagem" widgetVar="upLoadImageDialog"
+			showEffect="clip" id="imgUpLoad" hideEffect="clip" resizable="false"
+			modal="true">
+
+			<p:outputPanel id="panelUpImagem">					
+					<p:fileUpload value="#{cadastroUsuarioBean.usuario.imagen}"/>				
+			</p:outputPanel>
+		</p:dialog>
+	</h:form>
+
+
+
+</ui:composition>

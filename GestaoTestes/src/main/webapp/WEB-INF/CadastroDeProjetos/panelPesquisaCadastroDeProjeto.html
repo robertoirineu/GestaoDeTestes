@@ -1,0 +1,62 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<!-- PAINEL E PESQUISA DO PROJETO -->
+	<h:form id="frmPesquisaProjeto">
+	<p:growl id="growl" showDetail="true" sticky="false" life="5000" />
+	
+		<p:panel header="Pesquisar Projetos"
+			style="padding: 0px; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD;">
+
+			<p:panelGrid columns="1" layout="grid"
+				styleClass="ui-panelgrid-blank">
+				<p:outputPanel>
+					<h:graphicImage library="images" name="lupa.png" height="15%"
+						width="15%" />
+					<p:outputLabel value="Pesquisar"
+						style="font-size: 24px !important; margin-left: 10px;" />
+				</p:outputPanel>
+
+				<p:outputPanel>
+					<p:outputLabel value="Nome do Projeto:" for="nomeProjeto"
+						styleClass="label" />
+					<p:inputText id="nomeProjeto"
+						value="#{cadastroProjetoBean.projetoPesquisado}" />
+				</p:outputPanel>
+
+				<p:outputPanel>
+					<p:commandButton value="Pesquisar"
+						style="border-radius: 20px !important;"
+						action="#{cadastroProjetoBean.buscarProjetos}"
+						update="frmPesquisaProjeto" />
+				</p:outputPanel>
+
+				<p:outputPanel>
+					<h:dataTable value="#{cadastroProjetoBean.projetosPesquisados}"
+						var="projeto" style="margin-top: 10px; margin-bottom: 15px;"
+						rows="15">
+						<h:column>
+							<h:commandLink value="#{projeto.nomeProjeto}"
+								style="text-decoration:none;">
+								<f:setPropertyActionListener value="#{projeto}"
+									target="#{cadastroProjetoBean.projeto}" />
+								<p:ajax update="frmCadastroProjeto" />
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+
+					<p:separator style="margin-bottom: 10px;" />
+					<p:outputLabel value="Total de Registros:" styleClass="outPutTotal" />
+					<p:outputLabel
+						value="#{cadastroProjetoBean.projetosPesquisados.size()}"
+						styleClass="outPutTotal" />
+
+				</p:outputPanel>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+</ui:composition>

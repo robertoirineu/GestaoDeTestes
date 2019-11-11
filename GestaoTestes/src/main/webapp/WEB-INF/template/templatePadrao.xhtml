@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- HEAD DO TEMPLATE PADRÃO DO SISTEMA -->
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Sistema de Comunicação e Gestão de Equipe de Testes</title>
+	<h:outputStylesheet library="css" name="templete.css" />
+	<h:outputStylesheet library="css" name="menu.css" />
+	<h:outputScript library="js" name="locale-primefaces.js" />
+</h:head>
+
+<h:body>
+
+		<!-- STATUS DAS REQUISIÇÕES AJAX (LOADING) -->
+	<p:ajaxStatus styleClass="ajaxstatus">
+		<f:facet name="start">
+			<h:graphicImage library="images" name="Loading.gif" />
+		</f:facet>
+	</p:ajaxStatus>
+	
+	<div class="ui-fluid">
+	
+
+	    <!-- MENU DA PÁGINA -->
+		<p:outputPanel>
+				<p:outputPanel>
+					<div class="menuLateral">
+						<ui:insert name="menuDaPagina">
+							<ui:include src="/WEB-INF/Menu/menu.xhtml" />
+						</ui:insert>
+					</div>
+				</p:outputPanel>
+				<p:sticky target="tb" />
+		</p:outputPanel>
+
+		<p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank">
+		
+			
+			<!-- CORPO DA PAGINA PADRÃO -->
+			<p:outputPanel>
+				
+				
+				<p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-3, ui-grid-col-9" styleClass="ui-panelgrid-blank">
+					<p:outputPanel>
+						<ui:insert name="conteudolEsquerdo"/>
+					</p:outputPanel>
+			
+					
+				
+					<p:outputPanel>
+						<ui:insert name="conteudolDireito"/>
+					</p:outputPanel>
+				</p:panelGrid>
+					
+		
+
+			</p:outputPanel>
+		</p:panelGrid>
+	</div>
+</h:body>
+
+</html>

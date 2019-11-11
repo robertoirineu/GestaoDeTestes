@@ -1,0 +1,202 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<!-- PAINEL DE CADASTRO DO CLIENTE -->
+
+	<h:form id="frmCadastroCliente">
+
+		<p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+		
+		<p:panel header="Cadastro de Clientes" style="padding: 0px; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD;">
+		
+			<p:outputPanel>
+				<h:graphicImage library="images" name="logo.png" height="5%"
+					width="5%" style="margin-left: 20px;"/>
+				<p:outputLabel value="Cliente" style="font-size: 24px !important; margin-left: 10px; color: cadetblue; " />
+			</p:outputPanel>
+			
+			<p:panel style="border-style: none !important">
+				<p:panelGrid columns="1" layout="grid"
+					styleClass="ui-panelgrid-blank">
+
+					<!-- PAINEL DOS DADOS (TOP) DO CADASTRO DO CLIENTE-->
+					<p:outputPanel>
+						<p:panelGrid columns="4" layout="grid"
+							columnClasses="ui-grid-col-2,ui-grid-col-5,ui-grid-col-3,ui-grid-col-2"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Código:" for="codCliente" styleClass="label"/>
+								<br />
+								<p:inputText disabled="true" id="codCliente"
+									value="#{cadastroClienteBean.cliente.codCliente}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Nome do Cliente:" for="nomeCliente" styleClass="label"/>
+								<br />
+								<p:inputText id="nomeCliente" required="true"
+									value="#{cadastroClienteBean.cliente.nomeCliente}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Telefone:" for="telCliente" styleClass="label"/>
+								<br />
+								<p:inputMask id="telCliente" mask="(99) 9999-9999"
+									required="true"
+									value="#{cadastroClienteBean.cliente.telCliente}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Status:" for="statusCliente" styleClass="label"/>
+								<br />
+								<p:selectOneMenu id="statusCliente" autoWidth="false"
+									value="#{cadastroClienteBean.cliente.statusCliente}">
+									<f:selectItem itemLabel="-Status-" noSelectionOption="true" />
+									<f:selectItems value="#{cadastroClienteBean.status}"
+										itemLabel="#{Sts.status}" var="Sts" itemValue="#{Sts}" />
+
+								</p:selectOneMenu>
+							</p:outputPanel>
+						</p:panelGrid>
+
+
+						<p:panelGrid columns="3" layout="grid"
+							columnClasses="ui-grid-col-7,ui-grid-col-2,ui-grid-col-3"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Endereço Completo:" for="endCliente" styleClass="label"/>
+								<br />
+								<p:inputText id="endCliente"
+									value="#{cadastroClienteBean.cliente.enderecoCliente}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Nº:" for="numCliente" styleClass="label"/>
+								<br />
+								<p:inputText id="numCliente"
+									value="#{cadastroClienteBean.cliente.numEndCliente}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Bairro:" for="brrCliente" styleClass="label"/>
+								<br />
+								<p:inputText id="brrCliente"
+									value="#{cadastroClienteBean.cliente.bairroCliente}" />
+							</p:outputPanel>
+						</p:panelGrid>
+
+						<p:panelGrid columns="4" layout="grid"
+							columnClasses="ui-grid-col-2,ui-grid-col-6,ui-grid-col-2,ui-grid-col-2"
+							styleClass="ui-panelgrid-blank">
+							<p:outputPanel>
+								<p:outputLabel value="CEP:" for="cepCliente" styleClass="label"/>
+								<br />
+								<p:inputMask id="cepCliente" mask="99999-999"
+									value="#{cadastroClienteBean.cliente.cepCliente}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Cidade:" for="cidadeCliente" styleClass="label"/>
+								<br />
+								<p:inputText id="cidadeCliente"
+									value="#{cadastroClienteBean.cliente.cidadeCliente}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Estado:" for="ufClietne" styleClass="label"/>
+								<br />
+								<p:selectOneMenu id="ufClietne" autoWidth="false"
+									value="#{cadastroClienteBean.cliente.uf}">
+									<f:selectItem itemLabel="-UF-" noSelectionOption="true" />
+									<f:selectItems value="#{cadastroClienteBean.UF}"
+										itemLabel="#{uniFed.uf}" var="uniFed" itemValue="#{uniFed}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Data:" for="dtCadCli" styleClass="label"/>
+								<br />
+								<p:calendar id="dtCadCli" pattern="dd/MM/yyyy"
+									value="#{cadastroClienteBean.cliente.dataCadastro}" />
+							</p:outputPanel>
+						</p:panelGrid>
+
+						<p:outputPanel>
+							<p:outputLabel value="Observações:" for="obsCliente" styleClass="label"/>
+							<br />
+							<p:inputTextarea id="obsCliente"
+								value="#{cadastroClienteBean.cliente.obsCLiente}" />
+						</p:outputPanel>
+
+					</p:outputPanel>
+
+					<!-- BARRA DOS BOTÕES -->
+					<p:panel>
+						<p:panelGrid columns="3" layout="grid"
+							columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4"
+							styleClass="ui-panelgrid-blank">
+							<p:commandButton value="Imprimir Cadastro" />
+
+							<p:commandButton value="salvar"
+								actionListener="#{cadastroClienteBean.salvarCliente}"
+								update="frmCadastroCliente frmPesquisaCliente" />
+
+							<p:commandButton value="Limpar" process="@this"
+								action="#{cadastroClienteBean.limparCampo}"
+								update="frmCadastroCliente frmPesquisaCliente" />
+						</p:panelGrid>
+					</p:panel>
+
+					<!-- TABLE VIEW -->
+					<p:outputPanel>
+						<p:outputLabel value="Projetos cadastrados"
+							style="font-size: 24px !important; color: cadetblue; " />
+
+						<p:dataTable value="#{cadastroClienteBean.cliente.projetos}"
+							var="projeto" reflow="true"
+							emptyMessage="Sem projetos cadastrados para esse cliente"
+							selectionMode="single" rowKey="" styleClass="dataTableDash" 
+						    style="margin-bottom: 15px;" rows="4" paginator="true" paginatorPosition="bottom">
+						    
+							<p:column headerText="Cód." style="width: 03%; text-align: center;">
+								<h:outputText value="#{projeto.codProjeto}" />
+							</p:column>
+
+							<p:column headerText="Nome do projeto" style="width: 30%;">
+								<h:outputText value="#{projeto.nomeProjeto}" style="text-align: left; font-weight: bold;"/>
+							</p:column>
+
+							<p:column headerText="Status" style="width: 07%; text-align: center;">
+								<h:outputText value="#{projeto.statusProjeto}" />
+							</p:column>
+
+							<p:column headerText="Endereço" style="width: 40%;">
+								<h:outputText value="#{projeto.cliente.enderecoCliente}" style="text-align: left;"/>
+							</p:column>
+
+							<p:column headerText="CEP" style="width: 10%; text-align: center;">
+								<h:outputText value="#{projeto.cliente.cepCliente}" />
+							</p:column>
+							<p:column headerText="Data de cadastro" style="width: 10%; text-align: center;">
+								<h:outputText value="#{projeto.dataProjetoInicio}" converter="dataConverter"/>
+							</p:column>
+						</p:dataTable>
+						
+						<p:separator/>
+						
+						<p:outputLabel value="Total de Registros:" styleClass="outPutTotal"/>
+						<p:outputLabel value="#{cadastroClienteBean.cliente.projetos.size()}" styleClass="outPutTotal"/>
+						
+					</p:outputPanel>
+				</p:panelGrid>
+			</p:panel>
+		</p:panel>
+	</h:form>
+
+</ui:composition>

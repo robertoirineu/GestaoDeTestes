@@ -1,0 +1,628 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<h:form id="dashboardAnalista">
+		<p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+
+
+		<p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-12"
+			styleClass="ui-panelgrid-blank" style="margin-bottom: 8px;">
+
+
+			<p:outputPanel>
+				<p:panel
+					style="padding: 0px !important; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD; border-radius: 9px">
+					<p:panelGrid columns="4" layout="grid"
+						columnClasses="ui-grid-col-3,ui-grid-col-3,ui-grid-col-3,ui-grid-col-3"
+						styleClass="ui-panelgrid-blank">
+
+						<p:panel
+							style="width: 100%; height:60px; background-color: #D3D3D3; padding: 0px !important; margin: 0px; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD; border-radius: 10px">
+							<p:panelGrid columns="2" layout="grid"
+								columnClasses="ui-grid-col-3,ui-grid-col-9"
+								styleClass="outPutTotalDash">
+								<h:graphicImage library="images" name="coding-2.png" height="30"
+									width="30" style="margin-right: 10px;" />
+								<p:outputLabel value="#{dashboardBean.totalProjetos}"
+									style="font-size: 28px !important; float: left; margin-left: 30px;" />
+							</p:panelGrid>
+							<p:panelGrid columns="1" layout="grid"
+								StyleClass="ui-panelgrid-blank"
+								style="background-color: cadetblue; color: #ffffff;">
+								<span style="color: #ffffff;">Total de Projetos</span>
+							</p:panelGrid>
+						</p:panel>
+
+						<p:panel
+							style="width: 100%; height:60px; background-color: #D3D3D3; padding: 0px !important; margin: 0px !important; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD; border-radius: 9px">
+							<p:panelGrid columns="2" layout="grid"
+								columnClasses="ui-grid-col-3,ui-grid-col-9"
+								styleClass="outPutTotalDash">
+								<h:graphicImage library="images" name="coding-2.png" height="30"
+									width="30" style="margin-right: 10px;" />
+								<p:outputLabel value="#{dashboardBean.totalProjetosEmAndamento}"
+									style="font-size: 28px !important; float: left; margin-left: 30px;" />
+							</p:panelGrid>
+							<p:panelGrid columns="1" layout="grid"
+								StyleClass="ui-panelgrid-blank"
+								style="background-color: cadetblue; color: #ffffff;">
+								<span style="color: #ffffff;">Total de Projetos em
+									Andamento</span>
+							</p:panelGrid>
+						</p:panel>
+
+						<p:panel
+							style="width: 100%; height:60px; background-color: #D3D3D3; padding: 0px !important; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD; border-radius: 9px">
+							<p:panelGrid columns="2" layout="grid"
+								columnClasses="ui-grid-col-3,ui-grid-col-9"
+								StyleClass="ui-panelgrid-blank" styleClass="outPutTotalDash">
+								<h:graphicImage library="images" name="coding-2.png" height="30"
+									width="30" style="margin-right: 10px;" />
+								<p:outputLabel value="#{dashboardBean.totalProjetosEntregues}"
+									style="font-size: 28px !important; float: left; margin-left: 30px;" />
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" layout="grid"
+								StyleClass="ui-panelgrid-blank"
+								style="background-color: cadetblue; color: #ffffff;">
+								<span style="color: #ffffff;">Total de Projetos Entregues</span>
+							</p:panelGrid>
+						</p:panel>
+
+						<p:panel
+							style="width: 100%; height:60px; background-color: #D3D3D3; padding: 0px !important; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD; border-radius: 9px">
+
+							<p:panelGrid columns="2" layout="grid"
+								styleClass="outPutTotalDash"
+								columnClasses="ui-grid-col-3,ui-grid-col-9"
+								StyleClass="ui-panelgrid-blank">
+
+								<h:graphicImage library="images" name="coding-2.png" height="30"
+									width="30" style="margin-right: 10px;" />
+								<p:outputLabel value="#{dashboardBean.totalDeClientesAtivos}"
+									style="font-size: 28px !important; float: left; margin-left: 30px;" />
+							</p:panelGrid>
+
+							<p:panelGrid columns="1" layout="grid"
+								StyleClass="ui-panelgrid-blank"
+								style="background-color: cadetblue; color: #ffffff;">
+								<span style="color: #ffffff;">Total de Clientes Ativos</span>
+							</p:panelGrid>
+						</p:panel>
+
+					</p:panelGrid>
+				</p:panel>
+
+			</p:outputPanel>
+
+		</p:panelGrid>
+
+		<p:panelGrid columns="2" layout="grid"
+			columnClasses="ui-grid-col-8, ui-grid-col-4"
+			styleClass="ui-panelgrid-blank">
+
+
+			<p:outputPanel>
+				<p:panel header="Projetos em Andamento"
+					style="padding: 0px !important; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD;">
+					<p:panelGrid columns="2" layout="grid"
+						columnClasses="ui-grid-col-6,ui-grid-col-6"
+						styleClass="ui-panelgrid-blank">
+						<p:outputPanel>
+							<h:graphicImage library="images" name="pieChart.png" height="10%"
+								width="10%" style="margin-right: 10px; " />
+							<p:outputLabel value="Projetos"
+								style="font-size: 20px !important; font-weight: bolder; color: cadetblue;" />
+						</p:outputPanel>
+
+						<p:outputPanel>
+						</p:outputPanel>
+					</p:panelGrid>
+
+					<p:panelGrid columns="3" layout="grid"
+						columnClasses="ui-grid-col-7,ui-grid-col-3,ui-grid-col-2"
+						styleClass="ui-panelgrid-blank">
+						<p:outputPanel>
+
+						</p:outputPanel>
+
+						<p:outputPanel>
+							<p:outputLabel value="Período:" for="periodoDash"
+								styleClass="label" />
+							<br />
+							<p:selectOneMenu id="periodoDash"
+								value="#{dashboardBean.periodoProjeto}">
+								<f:selectItems value="#{dashboardBean.periodo}" var="periodo"
+									itemLabel="#{periodo.periodo}" itemValue="#{periodo}" />
+							</p:selectOneMenu>
+						</p:outputPanel>
+
+						<p:outputPanel>
+							<br />
+							<p:commandButton value="Filtrar"
+								style="border-radius: 25px !important;"
+								action="#{dashboardBean.filtrarProjetoPorData}"
+								update="dashboardAnalista" />
+						</p:outputPanel>
+					</p:panelGrid>
+
+					<br />
+
+					<p:dataTable id="dashProjDataTable" styleClass="dataTableDash"
+						value="#{dashboardBean.projetos}" var="projeto"
+						selectionMode="single" rowKey="" reflow="true"
+						emptyMessage="Sem novos projetos cadastrados"
+						style="margin-bottom: 15px;" rows="7" paginator="true"
+						paginatorPosition="bottom">
+
+						<p:column headerText="Cod." style="width: 5%; text-align: center">
+							<h:outputText value="#{projeto.codProjeto}" />
+						</p:column>
+
+						<p:column headerText="Projeto" style="width: 45%;"
+							sortBy="#{projeto.nomeProjeto}">
+							<h:outputText value="#{projeto.nomeProjeto}"
+								style="text-align: left; font-weight: bold;" />
+						</p:column>
+
+						<p:column headerText="Data início"
+							style="width: 10%; text-align: center">
+							<h:outputText value="#{projeto.dataProjetoInicio}"
+								converter="dataConverter" />
+						</p:column>
+
+						<p:column headerText="Data fim"
+							style="width: 10%; text-align: center">
+							<h:outputText value="#{projeto.dataProjetoFim}"
+								converter="dataConverter" />
+						</p:column>
+
+						<p:column headerText="Progresso" style="width: 25%;">
+							<p:progressBar value="#{projeto.checkPoint.progresso}"
+								labelTemplate="{value}%" displayOnly="true"
+								style="font-weight: bolder;" />
+						</p:column>
+
+						<p:column headerText="Open" style="width: 05%;">
+
+							<p:commandButton icon="ui-icon-search"
+								style="border-radius: 100% !important; background-color: #F5F5F5 !important;"
+								oncomplete="PF('checkpointsProjetos').show()"
+								update=":chkDialogs:check">
+
+								<f:setPropertyActionListener value="#{projeto}"
+									target="#{dashboardBean.projetoSelecionado}" />
+
+							</p:commandButton>
+
+						</p:column>
+
+					</p:dataTable>
+
+					<p:outputLabel value="Total de Registros:" styleClass="outPutTotal" />
+					<p:outputLabel value="#{dashboardBean.projetos.size()}"
+						styleClass="outPutTotal" />
+
+				</p:panel>
+			</p:outputPanel>
+
+			<p:outputPanel>
+
+				<p:panel header="Minhas Tarefas"
+					style="padding: 0px !important;border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD;">
+					<p:panelGrid columns="1" layout="grid"
+						columnClasses="ui-grid-col-12" styleClass="ui-panelgrid-blank"
+						style="padding: 0px 0px 0px 0px;">
+
+						<p:outputPanel>
+							<h:graphicImage library="images" name="schedule.png" height="10%"
+								width="10%" style="margin-right: 10px;" />
+							<p:outputLabel value="Tarefas"
+								style="font-size: 20px !important; font-weight: bolder; color: cadetblue; text-shadow: none;" />
+						</p:outputPanel>
+
+						<p:panelGrid columns="2" layout="grid"
+							columnClasses="ui-grid-col-8,ui-grid-col-4"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Período:" for="periodoDashT"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="periodoDashT"
+									value="#{dashboardBean.periodoHistorico}">
+									<f:selectItems value="#{dashboardBean.periodo}" var="periodo"
+										itemLabel="#{periodo.periodo}" itemValue="#{periodo}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<br />
+								<p:commandButton value="Filtrar"
+									style="border-radius: 25px !important;"
+									action="#{dashboardBean.filtrarHistoricoPorData}"
+									update="dashboardAnalista" />
+							</p:outputPanel>
+
+						</p:panelGrid>
+
+						<p:dataTable value="#{dashboardBean.historicos}" var="historico"
+							reflow="true" selectionMode="single" rowKey="#{historico.id}"
+							paginator="true" paginatorPosition="bottom" rows="7"
+							paginaemptyMessage="Sem novos historicos cadastrados"
+							style="margin-bottom: 15px;" rowsPerPageLabel="7"
+							styleClass="dataTableDash">
+
+							<p:ajax event="rowSelect" listener="#{dashboardBean.onRowSelect}"
+								update=":histDialogs:hist" />
+
+							<p:column headerText="Id" style="width: 7%; text-align: center">
+								<h:outputText value="#{historico.id}"
+									style="color: #{dashboardBean.corAtraso(historico)};" />
+							</p:column>
+
+							<p:column headerText="Contato" style="width: 35%;">
+								<h:outputText value="#{historico.contato}"
+									style="text-align: left ; font-weight: bold; color: #{dashboardBean.corAtraso(historico)};" />
+							</p:column>
+
+							<p:column headerText="Data"
+								style="width: 25%; text-align: center"
+								sortBy="#{historico.dataRealizacao}">
+								<h:outputText value="#{historico.dataRealizacao}"
+									converter="dataConverter"
+									style="color: #{dashboardBean.corAtraso(historico)};" />
+							</p:column>
+
+							<p:column headerText="Tarefa" style="width: 25%;">
+								<h:outputText value="#{historico.tipoAcao.tipoAcao}"
+									style="text-align: left; color: #{dashboardBean.corAtraso(historico)};" />
+							</p:column>
+
+
+						</p:dataTable>
+
+					</p:panelGrid>
+
+					<p:outputLabel value="Total de Registros:" styleClass="outPutTotal"
+						style="margin-left: 10px ! important;" />
+					<p:outputLabel value="#{dashboardBean.historicos.size()}"
+						styleClass="outPutTotal" />
+
+				</p:panel>
+			</p:outputPanel>
+
+		</p:panelGrid>
+	</h:form>
+
+
+
+	<!-- PAINEL FORM-DIALOG CHECKPOINTS -->
+
+
+	<h:form id="chkDialogs">
+
+		<p:dialog widgetVar="checkpointsProjetos"
+			header="Checkpoints do Projeto" id="checkpointsProjetos"
+			showEffect="clip" hideEffect="clip" resizable="false" modal="true"
+			width="700" height="300">
+
+			<p:outputPanel id="check">
+				<p:panelGrid columns="2" layout="grid"
+					columnClasses="ui-grid-col-6,ui-grid-col-6"
+					styleClass="ui-panelgrid-blank">
+					<p:outputPanel>
+						<h:graphicImage library="images" name="pieChart.png" height="10%"
+							width="10%" style="margin-right: 10px; " />
+						<p:outputLabel value="Checkpoints"
+							style="font-size: 20px !important; font-weight: bolder; color: cadetblue;" />
+					</p:outputPanel>
+
+					<p:outputPanel>
+					</p:outputPanel>
+
+				</p:panelGrid>
+
+				<p:panelGrid columns="3" layout="grid"
+					styleClass="ui-panelgrid-blank">
+
+					<p:outputPanel style="margin-bottom: 10px;">
+						<p:outputLabel value="Alterar Status Projeto:" for="statusProjeto"
+							styleClass="label" />
+						<br />
+						<p:selectOneMenu id="statusProjeto" autoWidth="false"
+							disabled="#{dashboardBean.projetoSelecionado.checkPoint.progresso == 100? false:true}"
+							value="#{dashboardBean.projetoSelecionado.statusProjeto}">
+							<f:selectItem itemLabel="-Status-" noSelectionOption="true" />
+							<f:selectItems value="#{dashboardBean.status}"
+								itemLabel="#{Sts.status}" var="Sts" itemValue="#{Sts}" />
+						</p:selectOneMenu>
+					</p:outputPanel>
+
+				</p:panelGrid>
+				<p:panel>
+					<p:panelGrid columns="4" layout="grid"
+						columnClasses="ui-grid-col-3,ui-grid-col-3,ui-grid-col-3,ui-grid-col-3"
+						styleClass="ui-panelgrid-blank" style="margin-top: 30px;">
+
+						<p:outputPanel>
+							<p:selectBooleanCheckbox
+								value="#{dashboardBean.projetoSelecionado.checkPoint.reuniaoEntendimento}"
+								style="margin-right: 5px" id="reuniaoentendimento" />
+							<p:outputLabel value="Reunião entendimento"
+								for="reuniaoentendimento" styleClass="label" />
+						</p:outputPanel>
+
+						<p:outputPanel>
+							<p:selectBooleanCheckbox
+								value="#{dashboardBean.projetoSelecionado.checkPoint.instrumentacao}"
+								style="margin-right: 5px" id="instrumentacao" />
+							<p:outputLabel value="Instrumentação" for="instrumentacao"
+								styleClass="label" />
+						</p:outputPanel>
+
+						<p:outputPanel>
+							<p:selectBooleanCheckbox
+								value="#{dashboardBean.projetoSelecionado.checkPoint.performance}"
+								style="margin-right: 5px" id="performance" />
+							<p:outputLabel value="Performance" for="performance"
+								styleClass="label" />
+						</p:outputPanel>
+
+						<p:outputPanel>
+							<p:selectBooleanCheckbox
+								value="#{dashboardBean.projetoSelecionado.checkPoint.stresTest}"
+								style="margin-right: 5px" id="stresstest" />
+							<p:outputLabel value="Stres test" for="stresstest"
+								styleClass="label" />
+						</p:outputPanel>
+
+					</p:panelGrid>
+
+					<p:panelGrid columns="4" layout="grid"
+						columnClasses="ui-grid-col-3,ui-grid-col-3,ui-grid-col-3,ui-grid-col-3"
+						styleClass="ui-panelgrid-blank" style="margin-top: 10px;">
+
+						<p:outputPanel>
+
+							<p:selectBooleanCheckbox
+								value="#{dashboardBean.projetoSelecionado.checkPoint.levantamentoRequisitos}"
+								style="margin-right: 5px" id="levRequisito" />
+							<p:outputLabel value="Levantamento requisitos" for="levRequisito"
+								styleClass="label" />
+						</p:outputPanel>
+
+						<p:outputPanel>
+							<p:selectBooleanCheckbox
+								value="#{dashboardBean.projetoSelecionado.checkPoint.coletaLogs}"
+								style="margin-right: 5px" id="coletalogs" />
+							<p:outputLabel value="Coleta logs" for="coletalogs"
+								styleClass="label" />
+						</p:outputPanel>
+
+						<p:outputPanel>
+							<p:selectBooleanCheckbox
+								value="#{dashboardBean.projetoSelecionado.checkPoint.capacityPlanner}"
+								style="margin-right: 5px" id="capplaner" />
+							<p:outputLabel value="Capacity planner" for="capplaner"
+								styleClass="label" />
+						</p:outputPanel>
+
+						<p:outputPanel>
+							<p:selectBooleanCheckbox
+								value="#{dashboardBean.projetoSelecionado.checkPoint.entregaRelatório}"
+								style="margin-right: 5px" id="entrelatorio" />
+							<p:outputLabel value="Entrega relatório" for="entrelatorio"
+								styleClass="label" />
+						</p:outputPanel>
+
+					</p:panelGrid>
+				</p:panel>
+				<p:panelGrid columns="3" layout="grid"
+					styleClass="ui-panelgrid-blank" style="margin-top: 10px;">
+
+					<p:commandButton value="Atualizar Projeto"
+						action="#{dashboardBean.adicionaCheckPoint}"
+						oncomplete="PF('checkpointsProjetos').hide()"
+						update="chkDialogs:check, dashboardAnalista" />
+					<p:outputPanel />
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+	</h:form>
+
+	<h:form id="histDialogs">
+		<p:dialog widgetVar="HistoricoDialog" id="cadastroDeHistoricoDialog"
+			header="Detalhe Histórico" showEffect="clip" hideEffect="clip"
+			resizable="false" modal="true" width="800" height="410">
+
+			<p:outputPanel id="hist">
+				<p:panelGrid columns="1" layout="grid"
+					styleClass="ui-panelgrid-blank">
+
+
+					<p:panelGrid columns="2" layout="grid"
+						columnClasses="ui-grid-col-9,ui-grid-col-3"
+						styleClass="ui-panelgrid-blank">
+
+						<p:outputPanel></p:outputPanel>
+
+						<p:outputPanel>
+							<p:selectBooleanCheckbox id="chkAtrasado" disabled="true"
+								value="#{dashboardBean.historicoSelecionado.tarefaAtrasada}"
+								style="margin-right: 5px" />
+							<p:outputLabel value="Tarefa atrasada" styleClass="label"
+								for="chkAtrasado" />
+						</p:outputPanel>
+
+					</p:panelGrid>
+
+					<p:panel>
+						<p:panelGrid columns="5" layout="grid"
+							columnClasses="ui-grid-col-2,ui-grid-col-3,ui-grid-col-3,ui-grid-col-2,ui-grid-col-2"
+							styleClass="ui-panelgrid-blank">
+							<p:outputPanel>
+								<h:graphicImage library="images" name="clipBoard.png"
+									height="40%" width="40%" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Prioridade:" for="prioridade"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="prioridade" autoWidth="false"
+									disabled="#{dashboardBean.desabilitarCamposHistorico}"
+									value="#{dashboardBean.historicoSelecionado.prioridade}">
+									<f:selectItem itemLabel="-PRIORIDADE-" noSelectionOption="true" />
+									<f:selectItems value="#{projetoHistoricoBean.prioridade}"
+										itemLabel="#{prioridade.prioridade}" var="prioridade"
+										itemValue="#{prioridade}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Status Histórico:" for="statusHis"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="statusHis" autoWidth="false"
+									required="true"
+									disabled="#{dashboardBean.desabilitarCamposHistorico}"
+									value="#{dashboardBean.historicoSelecionado.statusHistorico}">
+									<f:selectItem itemLabel="-STATUS-" noSelectionOption="true" />
+									<f:selectItems value="#{dashboardBean.statusHistorico}"
+										itemLabel="#{StsHist.statusHistorico}" var="StsHist"
+										itemValue="#{StsHist}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Prazo Realização:" for="dataRealizacao"
+									styleClass="label" />
+								<br />
+								<p:calendar id="dataRealizacao" disabled="true"
+									value="#{dashboardBean.historicoSelecionado.dataRealizacao}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Fechamento:" for="dataIFechamento"
+									styleClass="label" />
+								<br />
+								<p:calendar id="dataIFechamento"
+									disabled="#{dashboardBean.desabilitarCamposHistorico}"
+									value="#{dashboardBean.historicoSelecionado.dataFechamento}" />
+							</p:outputPanel>
+
+						</p:panelGrid>
+
+						<p:panelGrid columns="4" layout="grid"
+							columnClasses="ui-grid-col-3,ui-grid-col-3,ui-grid-col-3,ui-grid-col-3"
+							styleClass="ui-panelgrid-blank">
+							<p:outputPanel>
+								<p:outputLabel value="Tipo de ação:" for="tpAcao"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="tpAcao" autoWidth="false"
+									disabled="#{dashboardBean.desabilitarCamposHistorico}"
+									value="#{dashboardBean.historicoSelecionado.tipoAcao}">
+									<p:ajax listener="#{dashboardBean.onTipoAcaoChange}"
+										update="ac" />									
+									<f:selectItem itemLabel="-TIPO AÇÃO-" noSelectionOption="true" />
+									<f:selectItems value="#{dashboardBean.tipoAcaoHistorico}"
+										itemLabel="#{tpHistorico.tipoAcao}" var="tpHistorico"
+										itemValue="#{tpHistorico}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Ação:" for="ac" styleClass="label" />
+								<br />
+								<p:selectOneMenu id="ac" autoWidth="false"
+									disabled="#{dashboardBean.desabilitarCamposHistorico}"
+									value="#{dashboardBean.historicoSelecionado.acaoHistorico}">
+									<f:selectItem itemLabel="-ACÃO-" noSelectionOption="true" />
+									<f:selectItems value="#{dashboardBean.acaoHistorico}"
+										itemLabel="#{TpAcao.acaoHistorico}" var="TpAcao"
+										itemValue="#{TpAcao}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Responsável:" for="nomeResponsavel"
+									styleClass="label" />
+								<br />
+								<p:autoComplete id="nomeResponsavel"
+									readonly="#{dashboardBean.desabilitarCamposHistorico}"
+									value="#{dashboardBean.historicoSelecionado.responsavel}"
+									completeMethod="#{dashboardBean.usuarioAutoComplete}"
+									var="responsavel" itemLabel="#{responsavel.nomeUsuario}"
+									itemValue="#{responsavel}" converter="usuarioConverter" />
+							</p:outputPanel>
+
+
+							<p:outputPanel>
+								<p:outputLabel value="Contato:" for="contato" styleClass="label" />
+								<br />
+								<p:inputText id="contato"
+									readonly="#{dashboardBean.desabilitarCamposHistorico}"
+									value="#{dashboardBean.historicoSelecionado.contato}" />
+							</p:outputPanel>
+
+						</p:panelGrid>
+
+						<p:panelGrid columns="2" layout="grid"
+							columnClasses="ui-grid-col-8,ui-grid-col-4"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Comentário/Histórico:" for="obsHs"
+									styleClass="label" />
+								<br />
+								<p:inputTextarea id="obsHs" cols="3" rows="15"
+									autoResize="false"
+									readonly="#{dashboardBean.desabilitarCamposHistorico}"
+									value="#{dashboardBean.historicoSelecionado.comentarioHistorico}" />
+
+							</p:outputPanel>
+							<p:outputPanel>
+								<p:outputLabel value="Justificativa atraso:" for="jusAtraso"
+									styleClass="label" />
+								<br />
+								<p:inputTextarea id="jusAtraso" cols="2" rows="15"
+									readonly="#{dashboardBean.desabilitarCamposHistorico? false:true}"
+									autoResize="false"
+									value="#{dashboardBean.historicoSelecionado.justificativaAtraso}" />
+
+							</p:outputPanel>
+
+						</p:panelGrid>
+					</p:panel>
+
+				</p:panelGrid>
+
+				<p:panelGrid columns="3" layout="grid"
+					columnClasses="ui-grid-col-3,ui-grid-col-3,ui-grid-col-9"
+					styleClass="ui-panelgrid-blank">
+
+					<p:commandButton value="Atualizar Histórico"
+						disabled="#{dashboardBean.desabilitarCamposHistorico}"
+						actionListener="#{dashboardBean.atualizaHistoricoSelecionado}"
+						update="dashboardAnalista"
+						oncomplete="PF('HistoricoDialog').hide()" />
+
+					<p:commandButton value="Adicionar Justificativa"
+						disabled="#{dashboardBean.desabilitarCamposHistorico? false:true}"
+						actionListener="#{dashboardBean.atualizaHistoricoSelecionado}"
+						update="histDialogs:hist, dashboardAnalista" />
+					<p:outputPanel></p:outputPanel>
+
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+	</h:form>
+</ui:composition>
+

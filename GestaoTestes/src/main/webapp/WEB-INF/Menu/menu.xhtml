@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<p:panelGrid>
+		<p:outputPanel id="tb">
+			<h:form id="frmMenu">
+				<div class="header">
+
+					<p:panelGrid columns="3" layout="grid"
+						columnClasses="ui-grid-col-2,ui-grid-col-8,ui-grid-col-2"
+						styleClass="ui-panelgrid-blank">
+
+						<p:outputPanel>
+							<div>
+								<p:graphicImage library="images" cache="false"
+									name="ic_menu_white_48pt_2x.png" height="20%"
+									styleClass="mnImg" width="20%"
+									onmousemove="PF('sidebar1').show()" />
+							</div>
+
+						</p:outputPanel>
+						<p:outputPanel>
+						</p:outputPanel>
+
+						<p:panelGrid columns="2" layout="grid"
+							columnClasses="ui-grid-col-8,ui-grid-col-4"
+							styleClass="ui-panelgrid-blank">
+							<p:outputPanel style="height: 100%; width: 100%; ">
+								<p:outputLabel value="#{menuBean.usuarioLogado} "
+									style="font-size: 14px !important ; color:#ffffff; float: right; margin-top: 15px;" />
+							</p:outputPanel>
+
+							<p:outputPanel style="height: 100%; width: 100%">
+								<p:graphicImage library="images" name="usuNull.png" height="70%"
+									width="70%" />
+							</p:outputPanel>
+						</p:panelGrid>
+
+					</p:panelGrid>
+
+					<p:sidebar widgetVar="sidebar1" baseZIndex="10000"
+						styleClass="sideBar">
+
+						<h1 style="font-weight: normal; color: cadetblue;">Menu</h1>
+						<div class="menubuttons">
+							<p:commandButton value="Dashboard" action="#{menuBean.menuDash}"
+								update="@all" />
+						</div>
+						
+						<div class="menubuttons">
+							<p:commandButton value="Cadastro de usuario"  disabled="#{menuBean.gerente? false:true}"
+								action="#{menuBean.menuUsuario}" update="@all" />
+						</div>
+						
+						<div class="menubuttons">
+							<p:commandButton value="Cadastro de Projeto" disabled="#{menuBean.gerente? false:true}"
+								action="#{menuBean.menuProjeto}" update="@all" />
+						</div>
+						
+						<div class="menubuttons">
+							<p:commandButton value="Cadastro de Cliente"
+								action="#{menuBean.menuCliente}" update="@all" />
+						</div>
+						
+						<div class="menubuttons">
+							<p:commandButton value="Cadastro de Historico"
+								action="#{menuBean.menuProjetoHistorico}" update="@all" />
+						</div>
+						
+						<div class="menubuttons">
+							<p:commandButton value="Sair" action="#{menuBean.menuSair}"
+								update="@all" />
+						</div>
+					</p:sidebar>
+				</div>
+			</h:form>
+		</p:outputPanel>
+
+	</p:panelGrid>
+
+</ui:composition>

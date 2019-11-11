@@ -1,0 +1,239 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<!-- PAINEL DE CADASTRO DO PROJETO -->
+
+	<h:form id="frmCadastroProjeto">
+
+		<p:growl id="growl" showDetail="true" sticky="false" life="3000" />
+		<p:panel header="Cadastro de Projetos"
+			style="padding: 0px; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD;">
+
+			<p:outputPanel>
+				<h:graphicImage library="images" name="logo.png" height="5%"
+					width="5%" style="margin-left: 20px;" />
+				<p:outputLabel value="Projeto"
+					style="font-size: 24px !important; margin-left: 10px;" />
+			</p:outputPanel>
+
+			<p:panel style="border-style: none !important;">
+
+				<p:panelGrid columns="1" layout="grid"
+					styleClass="ui-panelgrid-blank">
+
+					<!-- PAINEL DOS DADOS (TOP) DO CADASTRO DO PROJETO-->
+					<p:outputPanel>
+
+						<p:panelGrid columns="3" layout="grid"
+							columnClasses="ui-grid-col-2,ui-grid-col-7,ui-grid-col-3"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Código Cliente:" for="codCliente"
+									styleClass="label" />
+								<br />
+								<p:inputText disabled="true" id="codCliente"
+									value="#{cadastroProjetoBean.projeto.cliente.codCliente}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Nome do Cliente:" for="nomeCliente"
+									styleClass="label" />
+								<br />
+								<p:autoComplete id="nomeCliente" required="true"
+									value="#{cadastroProjetoBean.projeto.cliente}"
+									completeMethod="#{cadastroProjetoBean.clienteAutoComplete}"
+									var="cliente" itemLabel="#{cliente.nomeCliente}"
+									itemValue="#{cliente}" converter="clienteConverter" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Status Projeto:" for="statusProjeto"
+									styleClass="label" />
+								<br />
+								<p:selectOneMenu id="statusProjeto" autoWidth="false"
+									required="true"
+									value="#{cadastroProjetoBean.projeto.statusProjeto}">
+									<f:selectItem itemLabel="-Status-" noSelectionOption="true" />
+									<f:selectItems value="#{cadastroProjetoBean.status}"
+										itemLabel="#{Sts.status}" var="Sts" itemValue="#{Sts}" />
+								</p:selectOneMenu>
+							</p:outputPanel>
+						</p:panelGrid>
+
+
+						<p:panelGrid columns="3" layout="grid"
+							columnClasses="ui-grid-col-2,ui-grid-col-8,ui-grid-col-2"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Código Projeto:" for="codProjeto"
+									styleClass="label" />
+								<br />
+								<p:inputText disabled="true" id="codProjeto"
+									value="#{cadastroProjetoBean.projeto.codProjeto}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Nome do Projeto:" for="nomeProjeto"
+									styleClass="label" />
+								<br />
+								<p:inputText id="nomeProjeto" required="true"
+									value="#{cadastroProjetoBean.projeto.nomeProjeto}" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Data Início:" for="dtCadProjeto"
+									styleClass="label" />
+								<br />
+								<p:calendar id="dtCadProjeto" pattern="dd/MM/yyyy" required="true"
+									value="#{cadastroProjetoBean.projeto.dataProjetoInicio}" />
+							</p:outputPanel>
+
+						</p:panelGrid>
+
+						<p:panelGrid columns="3" layout="grid"
+							columnClasses="ui-grid-col-5,ui-grid-col-5,ui-grid-col-2"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+								<p:outputLabel value="Analista Responsável:" for="analista"
+									styleClass="label" />
+								<br />
+								<p:autoComplete id="analista" required="true"
+									value="#{cadastroProjetoBean.projeto.analista}"
+									completeMethod="#{cadastroProjetoBean.usuarioAnalistaAutoComplete}"
+									var="analista" itemLabel="#{analista.nomeUsuario}"
+									itemValue="#{analista}" converter="usuarioConverter" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Gerente Responsável:" for="gerente"
+									styleClass="label" />
+								<br />
+								<p:autoComplete id="gerente" required="true"
+									value="#{cadastroProjetoBean.projeto.gerente}"
+									completeMethod="#{cadastroProjetoBean.usuarioGerenteAutoComplete}"
+									var="gerente" itemLabel="#{gerente.nomeUsuario}"
+									itemValue="#{gerente}" converter="usuarioConverter" />
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Data Término:" for="dtFimProjeto"
+									styleClass="label" />
+								<br />
+								<p:calendar id="dtFimProjeto" pattern="dd/MM/yyyy" required="true"
+									value="#{cadastroProjetoBean.projeto.dataProjetoFim}" />
+							</p:outputPanel>
+
+						</p:panelGrid>
+
+						<p:panelGrid columns="2" layout="grid"
+							columnClasses="ui-grid-col-9,ui-grid-col-3"
+							styleClass="ui-panelgrid-blank">
+
+							<p:outputPanel>
+
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:outputLabel value="Término Efetivo:" for="dtFimEfetivo"
+									styleClass="label" />
+								<br />
+								<p:calendar id="dtFimEfetivo" pattern="dd/MM/yyyy"
+									value="#{cadastroProjetoBean.projeto.dataFimEfetivo}" />
+							</p:outputPanel>
+
+						</p:panelGrid>
+					</p:outputPanel>
+
+					<!-- BARRA DOS BOTÕES -->
+					<p:panel>
+						<p:panelGrid columns="3" layout="grid"
+							columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4"
+							styleClass="ui-panelgrid-blank">
+
+							<p:commandButton value="Imprimir Cadastro" 
+								icon="pi pi-arrow-down">
+								<p:fileDownload value="#{cadastroProjetoBean.file}" />
+							</p:commandButton>
+
+							<p:commandButton value="salvar"
+								actionListener="#{cadastroProjetoBean.salvarProjeto}"
+								update="frmCadastroProjeto frmPesquisaProjeto" />
+
+							<p:commandButton value="Limpar" process="@this"
+								action="#{cadastroProjetoBean.limparCampo}"
+								update="frmCadastroProjeto frmPesquisaProjeto" />
+						</p:panelGrid>
+					</p:panel>
+
+					<!-- TABLE VIEW -->
+					<p:outputPanel>
+						<p:outputLabel value="Projetos cadastrados"
+							style="font-size: 24px !important" />
+
+						<p:dataTable value="#{cadastroProjetoBean.projetos}" var="projeto"
+							reflow="true" emptyMessage="Sem novos projetos cadastrados"
+							style="margin-bottom: 15px; font-size:15px" rows="05"
+							paginator="true" paginatorPosition="bottom">
+
+							<p:column headerText="Código"
+								style="width: 05%; text-align: center;">
+								<h:outputText value="#{projeto.codProjeto}" />
+							</p:column>
+
+							<p:column headerText="Nome do cliente" style="width: 30%;">
+								<h:outputText value="#{projeto.cliente.nomeCliente}"
+									style="text-align: left;" />
+							</p:column>
+
+							<p:column headerText="Nome do projeto"
+								style="width: 35%; font-weight: bold;">
+								<h:outputText value="#{projeto.nomeProjeto}"
+									style="text-align: left;" />
+							</p:column>
+
+							<p:column headerText="Analista" style="width: 15%;">
+								<h:outputText value="#{projeto.analista.nomeUsuario}"
+									style="text-align: left;" />
+							</p:column>
+
+							<p:column headerText="Gerente" style="width: 15%;">
+								<h:outputText value="#{projeto.gerente.nomeUsuario}"
+									style="text-align: left;" />
+							</p:column>
+
+						</p:dataTable>
+
+						<p:separator />
+						<p:outputLabel value="Total de Registros:"
+							styleClass="outPutTotal" />
+						<p:outputLabel value="#{cadastroProjetoBean.projetos.size()}"
+							styleClass="outPutTotal" />
+
+					</p:outputPanel>
+				</p:panelGrid>
+			</p:panel>
+		</p:panel>
+	</h:form>
+
+	<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+		draggable="false" closable="false" resizable="false">
+		<p:graphicImage library="images" name="ajaxloadingbar.gif" />
+	</p:dialog>
+
+	<script type="text/javascript">
+		function start() {
+			PF('statusDialog').show();
+		}
+
+		function stop() {
+			PF('statusDialog').hide();
+		}
+	</script>
+
+</ui:composition>

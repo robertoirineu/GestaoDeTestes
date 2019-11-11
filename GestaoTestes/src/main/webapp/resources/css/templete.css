@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@charset "UTF-8";
+
+.header {
+	border-style: 1px solid;
+	border-width: 2px;
+	border-color: #545454;
+	font-weight: bolder;
+	background-color: #545454;
+	width: 100%;
+	margin: 0px;
+	text-shadow: none !important;
+}
+
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 10px !important;
+	font-family: 'Abel', sans-serif !important;
+}
+
+.ui-icon {
+	color: #ffffff !important;
+}
+
+.ajaxstatus {
+	position: fixed;
+	top: 55px;
+	right: 10px;
+	width: 35px;
+	height: 50px;
+}
+
+.ui-shadow {
+	-webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+}
+
+.ui-widget {
+	font-size: 0.5;
+}
+
+.mnImg {
+	transition-duration: 1s;
+}
+
+.ui-fluid {
+	margin: 0px;
+}
+
+.mnImg:hover {
+	transform: rotate(-90deg);
+}
+
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #F5F5F5;
+	font-family: 'Roboto', sans serif;
+	text-shadow: none !important;
+}
+
+.outPutTotal {
+	margin-right: 05px;
+	font-weight: bolder;
+	color: cadetblue;
+	text-shadow: none !important;
+}
+
+.outPutTotalDash {
+	float: center;
+	font-weight: bolder;
+	margin: 0px !important;
+	padding: 0px !important;
+	text-align: center;
+	height: 35px;
+}
+
+.atrasado {
+	background-color: #545454 !important;
+	color: #ffffff !important;
+}
+
+.botoes {
+	padding: 2px;
+	width: 30%;
+}
+
+labelLogin {
+	width: 100%;
+}
+
+.label {
+	font-style: italic;
+	font-weight: bold;
+}
+
+.dataTableDashPesq :hover {
+	color: cadetblue;
+	text-shadow: cadetblue;
+	background-color: #ffffff;
+}
+
+.dataTableDash {
+	text-shadow: none !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	text-decoration: none !important;
+}
+
+.ui-state-highlight {
+	background-color: grey !important;
+}
+
+.ui-state-hover {
+	background-color: cadetblue !important;
+	color: #ffffff !important;
+	box-shadow: none !important;
+}
+
+.ui-inputtext, .ui-inputmask, .ui-inputtextarea, .ui-inputfield {
+	background-color: #F5F5F5 !important;
+	border-color: lightgray !important;
+	box-shadow: none !important;
+	color: gray !important;
+}
+
+.ui-inputtext:hover, .ui-inputmask:hover, .ui-inputtextarea:hover,
+	.ui-inputfield:hover {
+	background-color: #F5F5F5 !important;
+	border-color: cadetblue !important;
+	box-shadow: 2px cadetblue !important;
+
+}
+
+.ui-button {
+	background-color: gray !important;
+	border-color: gray !important;
+	color: #F5F5F5 !important;
+	background-image: none !important;
+	height: 25px !important;
+	text-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.ui-button:hover {
+	background-color: cadetblue !important;
+	border-color: cadetblue !important;
+	color: #F5F5F5 !important;
+	background-image: none !important;
+	height: 25px !important;
+	text-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.ui-panel-titlebar, .ui-dialog-titlebar {
+	background-color: gray !important;
+	border-color: gray !important;
+	color: #F5F5F5 !important;
+	text-shadow: none !important;
+	background-image: none !important;
+	height: 14px !important;
+}
+
+.ui-tabs-header {
+	background-color: #D6DADC !important;
+	border-color: gray !important;
+	color: #F5F5F5 !important;
+	text-shadow: none !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	text-decoration: none !important;
+}
+
+.ui-tabs-header :hover {
+	background-color: cadetblue !important;
+	color: white !important;
+	text-shadow: none !important;
+}
+
+.ui-tabs-selected {
+	background-color: cadetblue !important;
+	border-color: gray !important;
+	color: white !important;
+	text-shadow: none !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	text-decoration: none !important;
+}
+
+.ui-column-title, span.ui-column-title {
+	text-shadow: none !important;
+	background-image: none !important;
+	box-shadow: none !important;
+
+}
+
+.ui-datatable-data {
+	border-color: graytext !important;
+	text-shadow: none !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	text-decoration: none !important;
+}
+
+.ui-progressbar {
+	border-color: gray !important;
+	text-shadow: none !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	text-decoration: none !important;
+}
+
+.ui-progressbar-value {
+	background-color: lightgreen !important;
+	text-shadow: none !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	text-decoration: none !important;
+	text-weight: bolder !important;
+	border-color: cadetblue !important;
+}

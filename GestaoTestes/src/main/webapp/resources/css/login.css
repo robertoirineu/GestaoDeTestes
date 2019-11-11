@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 15px !important;
+	
+}
+
+span {
+	font-size: 15px;
+	color: #fffff; 
+	margim-top: 15px;
+	
+}
+
+body {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+	
+}
+
+#cabecalho {
+	height: 50px;
+	width: 100%;
+	background-color: #BDBDBD;
+	padding: 5px;
+	margin-bottom: 40px;
+	
+}
+
+#corpo {
+	height: 100%;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+
+
+	
+	
+}
+

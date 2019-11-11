@@ -1,0 +1,70 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<!-- PAINEL E PESQUISA DO HISTORICO -->
+	<h:form id="frmPesquisaHistorico">
+	<p:growl id="growl" showDetail="true" sticky="false" life="5000" />
+	
+		<p:panel header="Pesquisar Projeto" style="padding: 0px !important; border-style: none !important; box-shadow: 5px 5px 5px #BDBDBD;">
+			
+			<p:panelGrid columns="1" layout="grid"
+				styleClass="ui-panelgrid-blank">
+				
+				<p:outputPanel>
+					<h:graphicImage library="images" name="lupa.png" height="15%"
+						width="15%" />
+					<p:outputLabel value="Pesquisar"
+						style="font-size: 20px !Important; margin-left: 10px; color: cadetblue; " />
+				</p:outputPanel>
+
+				<p:outputPanel>
+					<p:outputLabel value="Nome do Cliente:" for="nomeCliente" styleClass="label"/>
+					<p:inputText id="nomeCliente"
+						value="#{projetoHistoricoBean.nomeCliente}" />
+				</p:outputPanel>
+
+				<p:outputPanel>
+					<p:outputLabel value="Nome do Projeto:" for="nomeProjeto" styleClass="label"/>
+					<p:inputText id="nomeProjeto"
+						value="#{projetoHistoricoBean.nomeProjeto}" />
+				</p:outputPanel>
+
+				<p:outputPanel>
+					<p:commandButton value="Pesquisar" style="border-radius: 20px !important;"
+						action="#{projetoHistoricoBean.buscarProjeto}" 
+						update="frmPesquisaHistorico" />
+				</p:outputPanel>
+
+				<p:outputPanel>
+				
+					<h:dataTable value="#{projetoHistoricoBean.projetosPesquisado}" styleClass="dataTableDashPesq"
+						var="projeto" style="margin-top: 10px; margin-bottom: 15px;">
+						
+						<h:column>
+							<h:commandLink value="#{projeto.nomeProjeto}"
+								style="text-decoration:none;" >
+								<f:setPropertyActionListener value="#{projeto}"
+									target="#{projetoHistoricoBean.projeto}" />
+									<p:ajax update="frmCadastroDeProjetoHistorico"/>
+							</h:commandLink>
+						</h:column>
+						
+					</h:dataTable>
+					
+					<p:separator />
+					
+					<p:outputLabel value="Total de Registros:" styleClass="outPutTotal"/>
+					<p:outputLabel value="#{projetoHistoricoBean.projetosPesquisado.size()}" styleClass="outPutTotal"/>
+			
+				</p:outputPanel>
+	
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+
+</ui:composition>
